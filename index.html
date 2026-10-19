@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exatta Corretora de Seguros</title>
+
+<link rel="icon" type="image/png" href="assets/icone_exatta.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+<style>
+:root{
+  --azul:#0b1a33;
+  --amarelo:#f4b223;
+  --cinza:#f4f4f4;
+  --header-altura:70px; 
+}
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#fff;
+}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  background:#fff;
+}
+
+.header-bar{
+  height:64px;
+  display:flex;
+  align-items:center;
+}
+
+.fita-header{
+  height:6px;
+  background:linear-gradient(90deg,#0b1a33,#f4b223);
+}
+
+/* ================= CONTAINER ================= */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+  width:100%;
+}
+
+.topo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo img{
+  height:38px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--azul);
+  font-weight:bold;
+  font-size:14px;
+}
+
+/* ================= BOTÃO CONTATO ================= */
+nav a[href="#contato"]{
+  background: var(--amarelo);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+nav a[href="#contato"]:hover{
+  background: #e0a917;
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  margin-top: var(--header-altura);
+  height: calc(100vh - var(--header-altura));
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11,26,51,.65);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hero-text {
+  max-width: 500px;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.hero-text span {
+  color: var(--amarelo);
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* ================= SWITCH ================= */
+.switch-wrapper{
+  position:absolute;
+  left:20px;
+  bottom:24px;
+  z-index:3;
+}
+
+.switch-box{
+  width:130px;
+  height:24px;
+  background:rgba(200,200,200,.25);
+  backdrop-filter:blur(10px);
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 9px;
+  color:#fff;
+  font-size:6px;
+  font-weight:bold;
+  position:relative;
+}
+
+.switch-capsule{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:45px;
+  height:13px;
+  background:rgba(255,255,255,.25);
+  border-radius:10px;
+}
+
+.switch-ball{
+  width:10px;
+  height:10px;
+  background:rgba(255,255,255,.25);
+  border-radius:50%;
+  position:absolute;
+  left:1.5px;
+  top:1.5px;
+  cursor:grab;
+  transition:left .2s;
+}
+
+/* ================= RESPONSIVO ================= */
+@media screen and (max-width: 768px) {
+  nav ul{
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    width: 200px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 10px 0; 
+  }
+
+  nav ul.active{
+    display: flex;
+  }
+
+  nav li{
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  nav li:last-child{
+    border-bottom: none;
+  }
+
+  .hamburger{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 28px;
+    height: 20px;
+  }
+
+  .hamburger div{
+    width: 100%;
+    height: 3px;
+    background: var(--azul);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .switch-wrapper {
+    left: 60px; 
+  }
+}
+
+/* ================= COTAÇÃO SEGURO ================= */
+.cotacao-seguro{
+  padding: 90px 20px;
+  background: linear-gradient(135deg, var(--azul), #162c55);
+}
+
+.cotacao-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cotacao-texto{
+  color: #fff;
+  max-width: 520px;
+}
+
+.cotacao-texto h2{
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.cotacao-texto h2 span{
+  color: var(--amarelo);
+}
+
+.cotacao-texto p{
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+  color: #eaeaea;
+}
+
+.cotacao-itens{
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.cotacao-itens div{
+  background: rgba(255,255,255,.12);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cotacao-itens i{
+  color: var(--amarelo);
+}
+
+.btn-cotacao{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--amarelo);
+  color: var(--azul);
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .25s ease;
+}
+
+.btn-cotacao:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.35);
+}
+
+.cotacao-icones{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  font-size: 48px;
+  color: var(--amarelo);
+  opacity: .9;
+}
+
+.cotacao-icones i{
+  background: rgba(255,255,255,.08);
+  padding: 26px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(244,178,35,.6); }
+  70% { box-shadow: 0 0 0 16px rgba(244,178,35,0); }
+  100% { box-shadow: 0 0 0 0 rgba(244,178,35,0); }
+}
+
+.btn-cotacao {
+  animation: pulse 2.5s infinite;
+}
+
+.cotacao-itens div {
+  transition: transform .25s ease, background .25s ease;
+}
+
+.cotacao-itens div:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.2);
+}
+
+/* ===== ANIMAÇÃO COTAÇÃO ===== */
+.cotacao-anim {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all .8s ease;
+}
+
+.cotacao-anim.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ícones em sequência */
+.cotacao-icones i {
+  opacity: 0;
+  transform: scale(.8);
+  animation: iconIn .6s ease forwards;
+}
+
+.cotacao-icones.show i:nth-child(1){ animation-delay: .1s }
+.cotacao-icones.show i:nth-child(2){ animation-delay: .25s }
+.cotacao-icones.show i:nth-child(3){ animation-delay: .4s }
+.cotacao-icones.show i:nth-child(4){ animation-delay: .55s }
+
+@keyframes iconIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= RESPONSIVO ================= */
+@media(max-width: 900px){
+  .cotacao-container{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cotacao-itens{
+    justify-content: center;
+  }
+
+  .cotacao-icones{
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 34px;
+  }
+}
+
+
+/* ================= SEGUROS ================= */
+.servicos{
+  background: linear-gradient(180deg, #f4f4f4 0%, #ffffff 100%);
+  padding: 100px 20px;
+  position: relative;
+}
+
+.servicos::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:260px;
+  background:linear-gradient(135deg, var(--azul), #162c55);
+  z-index:0;
+}
+
+.servicos h2{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  font-size:38px;
+  color:#fff;
+  margin-bottom:60px;
+}
+
+/* CONTAINER */
+.servicos .container{
+  position:relative;
+  z-index:1;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* FLEX — cards de seguros */
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:32px;
+}
+
+/* CARD */
+.card{
+  width:320px;
+  background:#fff;
+  border-radius:22px;
+  padding:36px 28px;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  transition:transform .3s ease, box-shadow .3s ease;
+  border-top:6px solid var(--amarelo);
+  text-align:center;
+}
+
+.card i{
+  font-size:40px;
+  color:var(--azul);
+  background: var(--amarelo);
+  padding:20px;
+  border-radius:50%;
+  margin-bottom:20px;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 28px 55px rgba(0,0,0,.18);
+}
+
+.card h3{
+  font-size:22px;
+  color:var(--azul);
+  margin-bottom:12px;
+}
+
+.card p{
+  font-size:15px;
+  line-height:1.6;
+  color:#555;
+}
+
+@media (max-width: 900px){
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 24px 16px;
+    box-sizing: border-box;
+  }
+
+  /* CENTRALIZA O ÚLTIMO CARD SE ELE ESTIVER SOZINHO */
+  .cards .card:last-child:nth-child(odd) {
+    grid-column: 1 / -1; /* ocupa toda a linha */
+    justify-self: center; /* centraliza na linha */
+    max-width: 320px; /* limita tamanho para não esticar */
+  }
+
+  .card h3 {
+    font-size: 18px;
+    word-wrap: break-word;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}
+
+/* ================= ANIMAÇÃO AO SCROLL ================= */
+.card {
+  opacity: 0;           /* cards começam invisíveis */
+  transform: translateY(30px); /* deslocados para baixo */
+  transition: all 0.6s ease-out; /* transição suave */
+}
+
+.card.show {
+  opacity: 1;           /* quando aparecer */
+  transform: translateY(0); /* posição final */
+}
+
+
+/* ================= PARCEIROS ================= */
+/* ================= PARCEIROS ================= */
+.parceiros{
+  padding:80px 20px;
+  background:#fff;
+}
+
+.parceiros h2{
+  text-align:center;
+  font-size:36px;
+  color:var(--azul);
+  margin-bottom:50px;
+}
+
+/* GRID FLEX – ÚLTIMA LINHA SEMPRE CENTRALIZADA */
+.parceiros-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+}
+
+/* CARD */
+.parceiro-card{
+  background:var(--cinza);
+  border-radius:18px;
+  padding:30px 20px;
+  width:180px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden; /* IMPEDE ESTOURO */
+  transition:all .3s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+
+.parceiro-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 28px rgba(0,0,0,.12);
+}
+
+/* LOGO */
+.parceiro-card img{
+  max-width:120px;
+  max-height:60px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width:600px){
+  .parceiro-card{
+    width:150px;
+    padding:24px 16px;
+  }
+
+  .parceiros h2{
+    font-size:28px;
+  }
+
+  .parceiro-card img{
+    max-width:100px;
+    max-height:50px;
+  }
+}
+
+/* ================= ANIMAÇÃO PARCEIROS ================= */
+.parceiro-anim {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.6s ease;
+}
+
+.parceiro-anim.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+
+
+/* ================= SOBRE ================= */
+.sobre { 
+  padding: 60px 20px;
+  color: #0b1a33;
+  background: url('assets/corporativo-fundo.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+
+.sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 26, 51, 0.5); 
+  z-index: 1;
+}
+
+.sobre .container {
+  position: relative;
+  z-index: 2; 
+  text-align: center; 
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sobre h2 {
+  font-size: 36px;
+  color: #ffffff; 
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center; 
+}
+
+.sobre p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #fff;
+  text-align: center; 
+  margin: 0 auto 20px;
+}
+
+.sobre p strong {
+  color: #f4b223; 
+}
+
+@media screen and (max-width: 768px) {
+  .sobre h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .sobre p {
+    font-size: 16px;
+    text-align: justify; 
+  }
+}
+
+
+
+
+footer{
+  background:#fff;
+  color:var(--azul);
+  padding:14px 10px;
+  text-align:center;
+  font-size:13px;
+  border-top:1px solid #e6e6e6;
+}
+
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: auto;      
+  height: auto;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; 
+  border-radius: 0;        
+  box-shadow: none;        
+  transition: transform 0.2s;
+}
+
+.whatsapp-float img {
+  width: 60px;   
+  height: 60px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* ================= MAPA ================= */
+.mapa-section{
+  padding:60px 20px;
+  background:var(--azul);
+}
+
+.mapa-container{
+  display:flex;
+  gap:30px;
+  align-items:stretch;
+}
+
+/* TEXTO */
+.mapa-info{
+  flex:1;
+  color:#fff;
+}
+
+.mapa-info h2{
+  font-size:38px;
+  color:var(--amarelo);
+  margin-bottom:14px;
+}
+
+.mapa-info p{
+  font-size:25px;
+  line-height:1.6;
+  color:#f1f1f1;
+}
+
+.mapa-info strong{
+  color:var(--amarelo);
+}
+
+.mapa-contatos{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.mapa-whats{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:44px;          /* altura fixa */
+  padding:10px 18px;        /* largura uniforme */
+}
+
+.mapa-whats .icone{
+  width:22px;
+  height:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.mapa-whats img{
+  width:22px;
+  height:22px;
+}
+
+.mapa-whats i{
+  font-size:18px;
+  line-height:1;
+}
+
+.mapa-whats .texto{
+  white-space:nowrap;
+}
+
+/* BOTÃO WHATSAPP */
+.mapa-whats{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--amarelo);
+  color:var(--azul);
+  padding:10px 16px;
+  margin-top:16px;
+  font-weight:bold;
+  font-size:16px;
+  border-radius:8px;
+  text-decoration:none;
+  transition:all .25s ease;
+}
+
+.mapa-whats img{
+  width:22px;
+  height:22px;
+}
+
+.mapa-whats:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 16px rgba(0,0,0,.25);
+}
+
+/* MAPA */
+.mapa-box{
+  flex:1;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.3);
+}
+
+.mapa-box iframe{
+  width:100%;
+  height:100%;
+  min-height:320px;
+  border:0;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width:900px){
+  .mapa-container{
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .mapa-info h2{
+    font-size:34px;
+  }
+
+  .mapa-info p{
+    font-size:24px;
+  }
+
+  .mapa-box iframe{
+    min-height:280px;
+  }
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-bar">
+    <div class="container topo">
+      <div class="logo">
+        <img src="assets/exatta.png" alt="Exatta">
+      </div>
+
+      <nav>
+        <div class="hamburger" id="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="nav-menu">
+          <li><a href="#">Início</a></li>
+          <li><a href="#servicos">Seguros</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#parceiros">Parceiros</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="fita-header"></div>
+</header>
+
+<section class="hero">
+  <div class="slide active" style="background-image:url('assets/familia.png')"></div>
+  <div class="slide" style="background-image:url('assets/executivo.png')"></div>
+  <div class="overlay"></div>
+
+  <div class="hero-content container">
+    <div class="hero-text" id="heroText">
+      <h1>Proteção <span>para você</span></h1>
+      <p>
+        Soluções completas em seguros pessoais para proteger você, sua família e seus bens,
+        garantindo tranquilidade, segurança financeira e cuidado em todas as fases da sua vida.
+      </p>
+    </div>
+  </div>
+
+  <div class="switch-wrapper">
+    <div class="switch-box">
+      <span>Para você</span>
+      <span>Empresa</span>
+      <div class="switch-capsule" id="capsule">
+        <div class="switch-ball" id="ball"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COTAÇÃO SEGURO ================= -->
+<section class="cotacao-seguro">
+  <div class="container cotacao-container">
+
+    <!-- TEXTO -->
+    <div class="cotacao-texto cotacao-anim">
+      <h2>Cote seu seguro <span>agora mesmo</span></h2>
+      <p>
+        Simples, rápido e sem compromisso. Compare as melhores opções e encontre
+        a proteção ideal para você ou sua empresa.
+      </p>
+
+      <div class="cotacao-itens">
+        <div><i class="fa-solid fa-bolt"></i> Rápido</div>
+        <div><i class="fa-solid fa-shield-halved"></i> Seguro</div>
+        <div><i class="fa-solid fa-thumbs-up"></i> Sem burocracia</div>
+      </div>
+
+      <a
+        href="https://administradora.aggilizador.com.br/"
+        target="_blank"
+        class="btn-cotacao"
+      >
+        <i class="fa-solid fa-calculator"></i>
+        Cote seu seguro aqui
+      </a>
+    </div>
+
+    <!-- ÍCONES -->
+    <div class="cotacao-icones cotacao-anim">
+      <i class="fa-solid fa-car"></i>
+      <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-heart-pulse"></i>
+      <i class="fa-solid fa-building"></i>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="servicos" id="servicos">
+  <div class="container">
+    <h2>Nossos Seguros</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fa-solid fa-car"></i>
+        <h3>Seguro Auto</h3>
+        <p>Proteção completa para seu veículo, com assistência 24h e cobertura sob medida.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h3>Seguro Frota</h3>
+        <p>Gestão eficiente e redução de riscos para frotas empresariais.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Seguro de Vida</h3>
+        <p>Amparo financeiro para quem você ama nos momentos mais importantes.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-coins"></i>
+        <h3>Financiamentos</h3>
+        <p>Soluções planejadas para viabilizar seus projetos com segurança.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-handshake"></i>
+        <h3>Consórcios</h3>
+        <p>Planejamento inteligente para conquistar bens sem juros.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-piggy-bank"></i>
+        <h3>Previdência Privada</h3>
+        <p>Construa hoje um futuro tranquilo e financeiramente seguro.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-house"></i>
+        <h3>Seguro Residencial</h3>
+        <p>Proteção completa para seu lar e sua família.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-building"></i>
+        <h3>Seguro Empresarial</h3>
+        <p>Soluções sob medida para proteger seu negócio.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h3>Seguro Celular</h3>
+        <p>Seu smartphone protegido contra roubo, furto e danos.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-bicycle"></i>
+        <h3>Seguro Bike</h3>
+        <p>Mais liberdade para pedalar com proteção total.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <h3>Responsabilidade Civil</h3>
+        <p>Segurança jurídica e financeira contra danos a terceiros.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="container">
+    <h2>Sobre a Exatta</h2>
+    <p>
+      Com mais de <strong>35 anos de atuação no mercado</strong>, nossa corretora é referência em <strong>confiança, solidez e compromisso</strong>. Ao longo dessa trajetória, construímos parcerias estratégicas com as <strong>maiores seguradoras do país</strong>, o que nos permite oferecer soluções completas, seguras e personalizadas para cada cliente.<br><br>
+
+      Nosso diferencial está na <strong>excelência do atendimento</strong>. Contamos com uma equipe altamente qualificada, preparada para compreender as necessidades de cada perfil e oferecer orientação <strong>clara, transparente e eficiente</strong>. Atuamos de forma consultiva, acompanhando nossos clientes em todas as etapas, desde a escolha do seguro ideal até o suporte nos momentos mais importantes.<br><br>
+
+      Mais do que uma corretora, somos <strong>parceiros na proteção de pessoas, patrimônios e negócios</strong>. Nosso compromisso é garantir <strong>tranquilidade, segurança e um relacionamento duradouro</strong>, sempre pautado pela ética, responsabilidade e respeito.
+    </p>
+  </div>
+</section>
+
+
+
+<section class="parceiros" id="parceiros">
+  <div class="container">
+    <h2>Nossos Parceiros</h2>
+
+    <div class="parceiros-grid">
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro1.png" alt="Parceiro 1">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro2.png" alt="Parceiro 2">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro3.png" alt="Parceiro 3">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro4.png" alt="Parceiro 4">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro5.png" alt="Parceiro 5">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro6.png" alt="Parceiro 6">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro7.png" alt="Parceiro 7">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro8.png" alt="Parceiro 8">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro9.png" alt="Parceiro 9">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro10.png" alt="Parceiro 10">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro11.png" alt="Parceiro 11">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro12.png" alt="Parceiro 12">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro13.png" alt="Parceiro 13">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro14.png" alt="Parceiro 14">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro15.png" alt="Parceiro 15">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro16.png" alt="Parceiro 16">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro17.png" alt="Parceiro 17">
+      </div>
+
+      <div class="parceiro-card parceiro-anim">
+        <img src="assets/parceiro18.png" alt="Parceiro 18">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="mapa-section" id="mapa">
+  <div class="container mapa-container">
+
+    <div class="mapa-info">
+      <h2>Visite-nos</h2>
+
+      <p>
+        Rua Campolide, 168 - Campo, Barbacena - MG<br><br>
+
+        <strong>HORÁRIO DE ATENDIMENTO</strong><br>
+        Segunda a sexta: 8h às 18h<br>
+      </p>
+
+      <div class="mapa-contatos">
+
+  <a href="https://wa.me/5532984019742" target="_blank" class="mapa-whats">
+    <span class="icone">
+      <img src="assets/whatsapp-icon.png" alt="WhatsApp">
+    </span>
+    <span class="texto">(32) 98401-9742</span>
+  </a>
+
+  <a href="tel:+553233312152" class="mapa-whats">
+    <span class="icone">
+      <i class="fa-solid fa-phone"></i>
+    </span>
+    <span class="texto">(32) 3331-2152</span>
+  </a>
+
+</div>
+
+    </div>
+
+    <div class="mapa-box">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.958963628945!2d-43.7745262!3d-21.2334758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa2203d2fb8e14d%3A0x5110a76d0ce2871a!2sExatta%20Corretora!5e0!3m2!1sen!2sbr!4v1765999514940!5m2!1sen!2sbr"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+
+<a href="https://wa.me/553298401974" target="_blank" class="whatsapp-float">
+  <img src="assets/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<footer id="contato">
+  © 2025 Exatta Corretora de Seguros
+</footer>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const heroText = document.getElementById('heroText');
+const ball = document.getElementById('ball');
+const capsule = document.getElementById('capsule');
+
+let index = 0;
+let dragging = false;
+let auto = setInterval(nextSlide, 5000);
+
+const textos = [
+  ['Proteção <span>para você</span>', 'Soluções completas em seguros pessoais para proteger você, sua família e seus bens, garantindo tranquilidade, segurança financeira e cuidado em todas as fases da sua vida.'],
+  ['Proteção <span>para sua empresa</span>', 'Soluções completas em seguros empresariais para proteger seu patrimônio, seus colaboradores e suas operações, garantindo estabilidade, segurança e tranquilidade para o crescimento do seu negócio.']
+];
+
+function showSlide(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  slides[i].classList.add('active');
+  heroText.querySelector('h1').innerHTML = textos[i][0];
+  heroText.querySelector('p').innerText = textos[i][1];
+  ball.style.left = i === 0 ? '1.5px' : (capsule.offsetWidth - ball.offsetWidth - 1.5) + 'px';
+}
+
+function nextSlide() {
+  index = (index + 1) % 2;
+  showSlide(index);
+}
+
+ball.addEventListener('mousedown', () => dragging = true);
+document.addEventListener('mouseup', () => dragging = false);
+
+document.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const r = capsule.getBoundingClientRect();
+  let x = e.clientX - r.left - ball.offsetWidth / 2;
+  x = Math.max(0, Math.min(r.width - ball.offsetWidth, x));
+  ball.style.left = x + 'px';
+  index = x > (r.width - ball.offsetWidth)/2 ? 1 : 0;
+  showSlide(index);
+  clearInterval(auto);
+  auto = setInterval(nextSlide, 5000);
+});
+
+// ================= MENU HAMBURGUER =================
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+});
+</script>
+
+<script>
+// ================= ANIMAÇÃO AO SCROLL =================
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+cards.forEach(card => observer.observe(card));
+
+const cotacaoElements = document.querySelectorAll('.cotacao-anim');
+
+const cotacaoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.3 });
+
+cotacaoElements.forEach(el => cotacaoObserver.observe(el));
+
+const parceiros = document.querySelectorAll('.parceiro-anim');
+
+const parceiroObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('show');
+      }, index * 100); // efeito cascata
+    }
+  });
+}, { threshold: 0.2 });
+
+parceiros.forEach(p => parceiroObserver.observe(p));
+
+</script>
+
+</body>
+</html>
